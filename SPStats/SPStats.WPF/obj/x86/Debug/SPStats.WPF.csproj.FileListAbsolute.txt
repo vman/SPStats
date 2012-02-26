@@ -1,0 +1,13 @@
+C:\Users\Administrator\SPStats\SPStats\SPStats.WPF\bin\Debug\SPStats.WPF.exe
+C:\Users\Administrator\SPStats\SPStats\SPStats.WPF\bin\Debug\SPStats.WPF.pdb
+C:\Users\Administrator\SPStats\SPStats\SPStats.WPF\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\SPStats\SPStats\SPStats.WPF\obj\x86\Debug\MainWindow.baml
+C:\Users\Administrator\SPStats\SPStats\SPStats.WPF\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Administrator\SPStats\SPStats\SPStats.WPF\obj\x86\Debug\App.g.cs
+C:\Users\Administrator\SPStats\SPStats\SPStats.WPF\obj\x86\Debug\SPStats.WPF_MarkupCompile.cache
+C:\Users\Administrator\SPStats\SPStats\SPStats.WPF\obj\x86\Debug\SPStats.WPF.g.resources
+C:\Users\Administrator\SPStats\SPStats\SPStats.WPF\obj\x86\Debug\SPStats.WPF.Properties.Resources.resources
+C:\Users\Administrator\SPStats\SPStats\SPStats.WPF\obj\x86\Debug\ResGen.read.1.tlog
+C:\Users\Administrator\SPStats\SPStats\SPStats.WPF\obj\x86\Debug\ResGen.write.1.tlog
+C:\Users\Administrator\SPStats\SPStats\SPStats.WPF\obj\x86\Debug\SPStats.WPF.exe
+C:\Users\Administrator\SPStats\SPStats\SPStats.WPF\obj\x86\Debug\SPStats.WPF.pdb

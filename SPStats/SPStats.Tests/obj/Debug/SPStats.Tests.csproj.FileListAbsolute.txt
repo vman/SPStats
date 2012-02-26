@@ -1,0 +1,9 @@
+C:\Users\Administrator\SPStats\SPStats\SPStats.Tests\bin\Debug\SPStats.Tests.dll
+C:\Users\Administrator\SPStats\SPStats\SPStats.Tests\bin\Debug\SPStats.Tests.pdb
+C:\Users\Administrator\SPStats\SPStats\SPStats.Tests\bin\Debug\SPStats.exe
+C:\Users\Administrator\SPStats\SPStats\SPStats.Tests\bin\Debug\SPStats.pdb
+C:\Users\Administrator\SPStats\SPStats\SPStats.Tests\bin\Debug\SPStats_Accessor.exe
+C:\Users\Administrator\SPStats\SPStats\SPStats.Tests\bin\Debug\SPStats_Accessor.pdb
+C:\Users\Administrator\SPStats\SPStats\SPStats.Tests\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\SPStats\SPStats\SPStats.Tests\obj\Debug\SPStats.Tests.dll
+C:\Users\Administrator\SPStats\SPStats\SPStats.Tests\obj\Debug\SPStats.Tests.pdb

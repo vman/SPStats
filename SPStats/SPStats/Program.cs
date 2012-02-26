@@ -10,37 +10,78 @@ namespace SPStats
     class Program
     {
         static void Main(string[] args)
-        {
-            //Microsoft.SharePoint.Administration.SPAdministrationWebApplication centralWeb = SPAdministrationWebApplication.Local;
-            //Console.WriteLine(centralWeb.DisplayName);
+        {   
+            //Central Admin
+            //SPAdministrationWebApplication centralWeb = SPAdministrationWebApplication.Local;
+            //Print(centralWeb.DisplayName);
 
             SPFarm farm = SPFarm.Local;
 
             //Print(farm.DisplayName);
 
-            //foreach(SPFeatureDefinition featureDef in farm.FeatureDefinitions)
-            //{
+            //Feature Definitions
+            //Print("**Feature Defitions:");
+            //foreach (SPFeatureDefinition featureDef in farm.FeatureDefinitions)
+            //{   
             //    Print(featureDef.DisplayName);
             //}
 
-            //foreach(SPSolution solutionDef in farm.Solutions)
+            ////Solutions
+            //Print("**Solutions:");
+            //foreach (SPSolution solutionDef in farm.Solutions)
             //{
             //    Print(solutionDef.DisplayName);
             //}
 
-            foreach (SPService service in farm.Services)
+            ////Services
+            //Print("**Services");
+            //foreach (SPService service in farm.Services)
+            //{
+            //    Print(string.IsNullOrEmpty(service.TypeName) ? string.IsNullOrEmpty(service.Name) ? service.DisplayName : service.Name : service.TypeName);
+            //}
+
+            ////Servers
+            //Print("**Servers");
+            //foreach (SPServer server in farm.Servers)
+            //{
+            //    Print(server.DisplayName);
+            //}
+
+            ////Print(farm.DefaultServiceAccount);
+
+            //Service Proxies
+            Print("**Service Proxies");
+            foreach (SPServiceProxy proxy in farm.ServiceProxies)
             {
-                Print(service.DisplayName);
+                Print(proxy.TypeName);
+
+                if (proxy.ApplicationProxies.Count > 0)
+                {
+                    //Application Proxies
+                    foreach (SPServiceApplicationProxy appProxy in proxy.ApplicationProxies)
+                    {
+                        Print("--" + appProxy.TypeName);
+                    }
+                }
             }
 
-            //Print(farm.Servers);
+            //Web Applications
+            //Print("**Web Applications");
+            //foreach (SPService service in farm.Services)
+            //{
 
-            //Print(farm.DefaultServiceAccount);
+            //    if(service as SPWebService != null)
+            //    {
+            //        Print(string.IsNullOrEmpty(service.TypeName) ? string.IsNullOrEmpty(service.Name) ? service.DisplayName : service.Name : service.TypeName);
 
-            //Print(farm.ServiceProxies);
-
-            //farm.
-
+            //        foreach (SPWebApplication webApp in ((SPWebService)service).WebApplications)
+            //        {
+            //            Print("--"+webApp.DisplayName);
+            //        }
+            //    }
+              
+            //}
+           
             //foreach (SPService curService in SPFarm.Local.Services)
             //{
             //    if (curService is SPWebService)
@@ -74,17 +115,7 @@ namespace SPStats
 
         public static void Print(object obj)
         {
-            //if (obj is IEnumerable<object>)
-            //{
-            //    foreach (var item in (IList<object>)obj)
-            //    {
-            //        Console.WriteLine(item.ToString());
-            //    }
-            //}
-            //else
-            //{
-                Console.WriteLine(obj.ToString());
-            //}
+            Console.WriteLine(obj.ToString());
         }
 
     }

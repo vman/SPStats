@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="066e2df5-5b2f-4d75-b19f-36208e738adb" name="Administrator@SP2010TS 2012-02-26 22:18:35" runUser="TANMAY\Administrator" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="47c507c5-4a29-4ebb-9864-e47f185df559">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Administrator_SP2010TS 2012-02-26 22_18_35">
+      <DeploymentItem filename="C:\Users\Administrator\SPStats\SPStats\SPStats\bin\Debug\SPStats.exe" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-02-26T22:18:35.4474003+05:30" queuing="2012-02-26T22:18:39.6349003+05:30" start="2012-02-26T22:18:40.0411503+05:30" finish="2012-02-26T22:18:54.8067753+05:30" />
+  <ResultSummary outcome="Error">
+    <Counters total="1" executed="1" error="0" failed="0" timeout="0" aborted="1" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="SP2010TS" outcome="Error" timestamp="2012-02-26T22:18:54.6974003+05:30">
+        <Text>Test host process exited unexpectedly.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="PrintTest" storage="c:\users\administrator\spstats\spstats\spstats.tests\bin\debug\spstats.tests.dll" id="aaba5d3d-e0fe-6e85-691b-ec8f251e2ddd">
+      <Execution id="4dc76fca-dfbf-4ab4-b4f7-f3d2254afa66" />
+      <TestMethod codeBase="C:/Users/Administrator/SPStats/SPStats/SPStats.Tests/bin/Debug/SPStats.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SPStats.Tests.ProgramTest, SPStats.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="PrintTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="aaba5d3d-e0fe-6e85-691b-ec8f251e2ddd" executionId="4dc76fca-dfbf-4ab4-b4f7-f3d2254afa66" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="4dc76fca-dfbf-4ab4-b4f7-f3d2254afa66" testId="aaba5d3d-e0fe-6e85-691b-ec8f251e2ddd" testName="PrintTest" computerName="SP2010TS" duration="00:00:14.5468750" startTime="2012-02-26T22:18:40.2599003+05:30" endTime="2012-02-26T22:18:54.8067753+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Aborted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4dc76fca-dfbf-4ab4-b4f7-f3d2254afa66">
+    </UnitTestResult>
+  </Results>
+</TestRun>

@@ -1,0 +1,9 @@
+C:\Users\Administrator\SPStats\SPStats\SPStats.WinForms\bin\Debug\SPStats.WinForms.exe
+C:\Users\Administrator\SPStats\SPStats\SPStats.WinForms\bin\Debug\SPStats.WinForms.pdb
+C:\Users\Administrator\SPStats\SPStats\SPStats.WinForms\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\SPStats\SPStats\SPStats.WinForms\obj\x86\Debug\SPStats.WinForms.Form1.resources
+C:\Users\Administrator\SPStats\SPStats\SPStats.WinForms\obj\x86\Debug\SPStats.WinForms.Properties.Resources.resources
+C:\Users\Administrator\SPStats\SPStats\SPStats.WinForms\obj\x86\Debug\ResGen.read.1.tlog
+C:\Users\Administrator\SPStats\SPStats\SPStats.WinForms\obj\x86\Debug\ResGen.write.1.tlog
+C:\Users\Administrator\SPStats\SPStats\SPStats.WinForms\obj\x86\Debug\SPStats.WinForms.exe
+C:\Users\Administrator\SPStats\SPStats\SPStats.WinForms\obj\x86\Debug\SPStats.WinForms.pdb
