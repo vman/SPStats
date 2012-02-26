@@ -3,3 +3,8 @@ C:\Users\Administrator\Documents\Visual Studio 2010\Projects\SPStats\SPStats\bin
 C:\Users\Administrator\Documents\Visual Studio 2010\Projects\SPStats\SPStats\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Administrator\Documents\Visual Studio 2010\Projects\SPStats\SPStats\obj\Debug\SPStats.exe
 C:\Users\Administrator\Documents\Visual Studio 2010\Projects\SPStats\SPStats\obj\Debug\SPStats.pdb
+C:\Users\Administrator\SPStats\SPStats\SPStats\obj\Debug\SPStats.exe
+C:\Users\Administrator\SPStats\SPStats\SPStats\obj\Debug\SPStats.pdb
+C:\Users\Administrator\SPStats\SPStats\SPStats\bin\Debug\SPStats.exe
+C:\Users\Administrator\SPStats\SPStats\SPStats\bin\Debug\SPStats.pdb
+C:\Users\Administrator\SPStats\SPStats\SPStats\obj\Debug\ResolveAssemblyReference.cache
