@@ -30,7 +30,7 @@ namespace SPStats
 
             foreach (SPService service in farm.Services)
             {
-                Print(service.GetType());//DisplayName == string.Empty?service.Name:service.DisplayName);
+                Print(service.DisplayName);
             }
 
             //Print(farm.Servers);
