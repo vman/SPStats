@@ -19,12 +19,12 @@ namespace SPStats
 
             //Print(farm.DisplayName);
 
-            //Feature Definitions
-            //Print("**Feature Defitions:");
-            //foreach (SPFeatureDefinition featureDef in farm.FeatureDefinitions)
-            //{   
-            //    Print(featureDef.DisplayName);
-            //}
+           // Feature Definitions
+            Print("**Feature Defitions:");
+            foreach (SPFeatureDefinition featureDef in farm.FeatureDefinitions)
+            {   
+                Print(featureDef.DisplayName);
+            }
 
             ////Solutions
             //Print("**Solutions:");
@@ -50,20 +50,20 @@ namespace SPStats
             ////Print(farm.DefaultServiceAccount);
 
             //Service Proxies
-            Print("**Service Proxies");
-            foreach (SPServiceProxy proxy in farm.ServiceProxies)
-            {
-                Print(proxy.TypeName);
+            //Print("**Service Proxies");
+            //foreach (SPServiceProxy proxy in farm.ServiceProxies)
+            //{
+            //    Print(proxy.TypeName);
 
-                if (proxy.ApplicationProxies.Count > 0)
-                {
-                    //Application Proxies
-                    foreach (SPServiceApplicationProxy appProxy in proxy.ApplicationProxies)
-                    {
-                        Print("--" + appProxy.TypeName);
-                    }
-                }
-            }
+            //    if (proxy.ApplicationProxies.Count > 0)
+            //    {
+            //        //Application Proxies
+            //        foreach (SPServiceApplicationProxy appProxy in proxy.ApplicationProxies)
+            //        {
+            //            Print("--" + appProxy.TypeName);
+            //        }
+            //    }
+            //}
 
             //Web Applications
             //Print("**Web Applications");
