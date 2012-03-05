@@ -23,6 +23,8 @@ namespace SPStats.WPF
     public partial class MainWindow : Window
     {
         SPFarm farm = null;
+        List<SPServiceProxy> serviceProxyList = null;
+        List<SPFeatureDefinition> featureDefintionList = null;
 
         public MainWindow()
         {
@@ -32,36 +34,74 @@ namespace SPStats.WPF
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-
+            listBox1.Items.Clear();
             ThreadPool.QueueUserWorkItem(new WaitCallback(GetServiceProxies));
 
         }
 
         public void GetServiceProxies(Object info)
-        {
-            
-
-            foreach (SPServiceProxy proxy in farm.ServiceProxies)
+        {   
+            if (serviceProxyList != null)
             {
-                AddData(proxy.TypeName, listBox1);
-
-                if (proxy.ApplicationProxies.Count > 0)
+                foreach (SPServiceProxy proxy in serviceProxyList)
                 {
-                    //Application Proxies
-                    foreach (SPServiceApplicationProxy appProxy in proxy.ApplicationProxies)
+                    //serviceProxyList.Add(proxy);
+
+                    AddData(proxy.TypeName, listBox1);
+
+                    if (proxy.ApplicationProxies.Count > 0)
                     {
-                        AddData("--"+appProxy.TypeName,listBox1);                        
+                        //Application Proxies
+                        foreach (SPServiceApplicationProxy appProxy in proxy.ApplicationProxies)
+                        {
+                            AddData("--" + appProxy.TypeName, listBox1);
+                        }
                     }
+
+                }
+            }
+            else
+            {
+                serviceProxyList = new List<SPServiceProxy>();
+
+                foreach (SPServiceProxy proxy in farm.ServiceProxies)
+                {
+                    serviceProxyList.Add(proxy);
+
+                    AddData(proxy.TypeName, listBox1);
+
+                    if (proxy.ApplicationProxies.Count > 0)
+                    {
+                        //Application Proxies
+                        foreach (SPServiceApplicationProxy appProxy in proxy.ApplicationProxies)
+                        {
+                            AddData("--" + appProxy.TypeName, listBox1);
+                        }
+                    }
+
                 }
 
             }
         }
-
+        
         void GetFeatureDefinitions(Object info)
         {
-            foreach (SPFeatureDefinition featureDef in farm.FeatureDefinitions)
+            if (featureDefintionList != null)
             {
-                AddData(featureDef.DisplayName,listBox2);
+                foreach (SPFeatureDefinition featureDef in featureDefintionList)
+                {
+                    AddData(featureDef.DisplayName, listBox1);
+                }
+            }
+            else
+            {
+                featureDefintionList = new List<SPFeatureDefinition>();
+
+                foreach (SPFeatureDefinition featureDef in farm.FeatureDefinitions)
+                {
+                    featureDefintionList.Add(featureDef);
+                    AddData(featureDef.DisplayName,listBox1);
+                }
             }
         }
 
@@ -76,7 +116,25 @@ namespace SPStats.WPF
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
+            listBox1.Items.Clear();
             ThreadPool.QueueUserWorkItem(new WaitCallback(GetFeatureDefinitions));
+        }
+
+        private void expander1_Expanded(object sender, RoutedEventArgs e)
+        {
+            ThreadPool.QueueUserWorkItem(new WaitCallback(GetFeatureDefinitions));
+        }
+
+        private void tviFeaturedenifions_Selected(object sender, RoutedEventArgs e)
+        {
+            listBox1.Items.Clear();
+            ThreadPool.QueueUserWorkItem(new WaitCallback(GetFeatureDefinitions));
+        }
+
+        private void tviServiceProxies_Selected(object sender, RoutedEventArgs e)
+        {
+            listBox1.Items.Clear();
+            ThreadPool.QueueUserWorkItem(new WaitCallback(GetServiceProxies));
         }
     }
 }
