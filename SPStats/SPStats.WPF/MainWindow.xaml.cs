@@ -68,22 +68,44 @@ namespace SPStats.WPF
                 {
                     serviceProxyList.Add(proxy);
 
-                    AddData(proxy.TypeName, listBox1);
+                    //TreeViewItem treeItem = new TreeViewItem();
+                    //treeItem.Name = proxy.TypeName;
+                   // AddItemToTreeView(treeItem, treeView1);
 
                     if (proxy.ApplicationProxies.Count > 0)
                     {
                         //Application Proxies
                         foreach (SPServiceApplicationProxy appProxy in proxy.ApplicationProxies)
                         {
-                            AddData("--" + appProxy.TypeName, listBox1);
+                           // AddItemToTreeViewItem(appProxy.TypeName, treeItem);
                         }
                     }
-
                 }
 
             }
         }
-        
+
+        void AddItemToTreeView(TreeViewItem treeViewitem, TreeView treeView)
+        {
+            this.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(delegate()
+            {
+                treeView.Items.Add(treeViewitem);
+
+            }));
+        }
+
+        void AddItemToTreeViewItem(string name, TreeViewItem treeViewitem)
+        {
+            this.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(delegate()
+            {
+                TreeViewItem treeItem = new TreeViewItem();
+                treeItem.Name = name;
+
+                treeViewitem.Items.Add(treeItem);
+
+            }));
+        }
+
         void GetFeatureDefinitions(Object info)
         {
             if (featureDefintionList != null)
@@ -105,6 +127,7 @@ namespace SPStats.WPF
             }
         }
 
+      
         void AddData(string item,ListBox control)
         {
             this.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(delegate()
