@@ -11,3 +11,5 @@ C:\Users\Administrator\SPStats\SPStats\SPStats.WPF\obj\x86\Debug\ResGen.read.1.t
 C:\Users\Administrator\SPStats\SPStats\SPStats.WPF\obj\x86\Debug\ResGen.write.1.tlog
 C:\Users\Administrator\SPStats\SPStats\SPStats.WPF\obj\x86\Debug\SPStats.WPF.exe
 C:\Users\Administrator\SPStats\SPStats\SPStats.WPF\obj\x86\Debug\SPStats.WPF.pdb
+C:\Users\Administrator\SPStats\SPStats\SPStats.WPF\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Administrator\SPStats\SPStats\SPStats.WPF\obj\x86\Debug\SPStats.WPF_MarkupCompile.lref
