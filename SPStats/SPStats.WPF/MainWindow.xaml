@@ -3,12 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="449" Width="781">
     <Grid>
-        <!--<Button Content="Get Service Proxies" Height="23" HorizontalAlignment="Left" Margin="25,10,0,0" Name="button1" VerticalAlignment="Top" Width="111" Click="button1_Click" />-->
-        <ListBox Height="386" HorizontalAlignment="Left" Margin="364,12,0,0" Name="listBox1" VerticalAlignment="Top" Width="364" />
-        <!--<Button Content="Get Feature Definitions" Height="23" HorizontalAlignment="Left" Margin="25,44,0,0" Name="button2" VerticalAlignment="Top" Width="127" Click="button2_Click" />-->
-        <TreeView Height="379" HorizontalAlignment="Left" Margin="10,10,0,0" Name="treeView1" VerticalAlignment="Top" Width="200">
+        <ListBox Height="388" HorizontalAlignment="Left" Margin="224,10,0,0" Name="lbDetails" VerticalAlignment="Top" Width="535" />
+        <TreeView Height="388" HorizontalAlignment="Left" Margin="10,10,0,0" Name="tvFarmElements" VerticalAlignment="Top" Width="200">
             <TreeViewItem Name="tviFeaturedenifions" Header="Feature Definitions" Selected="tviFeaturedenifions_Selected"></TreeViewItem>
             <TreeViewItem Name="tviServiceProxies" Header="Service Proxies" Selected="tviServiceProxies_Selected"></TreeViewItem>
+            <TreeViewItem Name="tviSolutions" Header="Solutions" Selected="tviSolutions_Selected"></TreeViewItem>
+            <TreeViewItem Name="tviServers" Header="Servers" Selected="tviServers_Selected"></TreeViewItem>
+            <TreeViewItem Name="tviWebApps" Header="Web Applications" Selected="tviWebApps_Selected"></TreeViewItem>
         </TreeView>
     </Grid>
 </Window>

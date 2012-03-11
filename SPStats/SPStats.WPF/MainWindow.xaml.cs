@@ -32,29 +32,21 @@ namespace SPStats.WPF
             farm = SPFarm.Local;
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
-            listBox1.Items.Clear();
-            ThreadPool.QueueUserWorkItem(new WaitCallback(GetServiceProxies));
-
-        }
-
         public void GetServiceProxies(Object info)
         {   
             if (serviceProxyList != null)
             {
                 foreach (SPServiceProxy proxy in serviceProxyList)
                 {
-                    //serviceProxyList.Add(proxy);
-
-                    AddData(proxy.TypeName, listBox1);
+                    //Service Proxies
+                    AddData(proxy.TypeName, lbDetails);
 
                     if (proxy.ApplicationProxies.Count > 0)
                     {
                         //Application Proxies
                         foreach (SPServiceApplicationProxy appProxy in proxy.ApplicationProxies)
                         {
-                            AddData("--" + appProxy.TypeName, listBox1);
+                            AddData("--" + appProxy.TypeName, lbDetails);
                         }
                     }
 
@@ -68,42 +60,20 @@ namespace SPStats.WPF
                 {
                     serviceProxyList.Add(proxy);
 
-                    //TreeViewItem treeItem = new TreeViewItem();
-                    //treeItem.Name = proxy.TypeName;
-                   // AddItemToTreeView(treeItem, treeView1);
+                    //Service Proxies
+                    AddData(proxy.TypeName, lbDetails);
 
                     if (proxy.ApplicationProxies.Count > 0)
                     {
                         //Application Proxies
                         foreach (SPServiceApplicationProxy appProxy in proxy.ApplicationProxies)
                         {
-                           // AddItemToTreeViewItem(appProxy.TypeName, treeItem);
+                            AddData("--" + appProxy.TypeName, lbDetails);
                         }
                     }
                 }
 
             }
-        }
-
-        void AddItemToTreeView(TreeViewItem treeViewitem, TreeView treeView)
-        {
-            this.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(delegate()
-            {
-                treeView.Items.Add(treeViewitem);
-
-            }));
-        }
-
-        void AddItemToTreeViewItem(string name, TreeViewItem treeViewitem)
-        {
-            this.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(delegate()
-            {
-                TreeViewItem treeItem = new TreeViewItem();
-                treeItem.Name = name;
-
-                treeViewitem.Items.Add(treeItem);
-
-            }));
         }
 
         void GetFeatureDefinitions(Object info)
@@ -112,7 +82,7 @@ namespace SPStats.WPF
             {
                 foreach (SPFeatureDefinition featureDef in featureDefintionList)
                 {
-                    AddData(featureDef.DisplayName, listBox1);
+                    AddData(featureDef.DisplayName, lbDetails);
                 }
             }
             else
@@ -122,7 +92,7 @@ namespace SPStats.WPF
                 foreach (SPFeatureDefinition featureDef in farm.FeatureDefinitions)
                 {
                     featureDefintionList.Add(featureDef);
-                    AddData(featureDef.DisplayName,listBox1);
+                    AddData(featureDef.DisplayName, lbDetails);
                 }
             }
         }
@@ -137,27 +107,70 @@ namespace SPStats.WPF
             }));
         }
 
-        private void button2_Click(object sender, RoutedEventArgs e)
-        {
-            listBox1.Items.Clear();
-            ThreadPool.QueueUserWorkItem(new WaitCallback(GetFeatureDefinitions));
-        }
-
-        private void expander1_Expanded(object sender, RoutedEventArgs e)
-        {
-            ThreadPool.QueueUserWorkItem(new WaitCallback(GetFeatureDefinitions));
-        }
-
         private void tviFeaturedenifions_Selected(object sender, RoutedEventArgs e)
         {
-            listBox1.Items.Clear();
+            ClearListBox(lbDetails);
             ThreadPool.QueueUserWorkItem(new WaitCallback(GetFeatureDefinitions));
         }
 
         private void tviServiceProxies_Selected(object sender, RoutedEventArgs e)
         {
-            listBox1.Items.Clear();
+            ClearListBox(lbDetails);
             ThreadPool.QueueUserWorkItem(new WaitCallback(GetServiceProxies));
+        }
+
+        private void tviSolutions_Selected(object sender, RoutedEventArgs e)
+        {
+            ClearListBox(lbDetails);
+            ThreadPool.QueueUserWorkItem(new WaitCallback(GetSolutions));
+        }
+
+        void GetSolutions(Object info)
+        {
+            foreach (SPSolution solutionDef in farm.Solutions)
+            {
+                AddData(solutionDef.DisplayName, lbDetails);
+            }
+        }
+
+        private void tviServers_Selected(object sender, RoutedEventArgs e)
+        {
+            ClearListBox(lbDetails);
+            ThreadPool.QueueUserWorkItem(new WaitCallback(GetServers));
+        }
+
+        void GetServers(Object info)
+        {
+            foreach (SPServer server in farm.Servers)
+            {
+                AddData(server.DisplayName, lbDetails);
+            }
+        }
+
+        static void ClearListBox(ListBox listBox)
+        {
+            listBox.Items.Clear();
+        }
+
+        private void tviWebApps_Selected(object sender, RoutedEventArgs e)
+        {
+            ClearListBox(lbDetails);
+            ThreadPool.QueueUserWorkItem(new WaitCallback(GetWebApps));
+        }
+
+        void GetWebApps(Object info)
+        {
+            foreach (SPService service in farm.Services)
+            {
+                if (service as SPWebService != null)
+                {
+                    foreach (SPWebApplication webApp in ((SPWebService)service).WebApplications)
+                    {
+                        AddData(webApp.DisplayName, lbDetails);
+                    }
+                }
+
+            }
         }
     }
 }
