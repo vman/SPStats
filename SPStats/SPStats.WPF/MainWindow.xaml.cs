@@ -1,20 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Microsoft.SharePoint.Administration;
 using System.Windows.Threading;
-using System.Threading;
 using Microsoft.SharePoint;
+using Microsoft.SharePoint.Administration;
 
 namespace SPStats.WPF
 {
@@ -185,7 +176,7 @@ namespace SPStats.WPF
             {
                 TreeViewItem tvi = new TreeViewItem();
                 tvi.Header = webApp.DisplayName;
-                tvi.Tag = webApp;
+                tvi.Tag = webApp.Sites;
                 tvi.Selected += new RoutedEventHandler(tvi_Selected);
                 parentItem.Items.Add(tvi);
 
@@ -198,7 +189,7 @@ namespace SPStats.WPF
 
             var selectedTvi = sender as TreeViewItem;
 
-            foreach (SPSite site in ((SPWebApplication)selectedTvi.Tag).Sites)
+            foreach (SPSite site in ((SPSiteCollection)selectedTvi.Tag))
             {
                 AddData(site.Url, lbDetails);
             }
@@ -209,6 +200,11 @@ namespace SPStats.WPF
         {
             ClearTreeViewItem(tviWebApps);
             ThreadPool.QueueUserWorkItem(new WaitCallback(GetWebApps));
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
