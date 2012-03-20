@@ -11,9 +11,10 @@
         <TreeView Height="500" HorizontalAlignment="Left" Margin="10,10,0,0" Name="tvFarmElements" VerticalAlignment="Top" Width="303">
             <TreeViewItem Name="tviFeaturedenifions" Header="Feature Definitions" Selected="tviFeaturedenifions_Selected"></TreeViewItem>
             <TreeViewItem Name="tviServiceProxies" Header="Service Proxies" Selected="tviServiceProxies_Selected"></TreeViewItem>
+            <TreeViewItem Name="tviApplicationPools" Header="Application Pools" Selected="tviApplicationPools_Selected"></TreeViewItem>
             <TreeViewItem Name="tviSolutions" Header="Solutions" Selected="tviSolutions_Selected"></TreeViewItem>
             <TreeViewItem Name="tviServers" Header="Servers" Selected="tviServers_Selected"></TreeViewItem>
-            <TreeViewItem Name="tviWebApps" Header="Web Applications" Selected="tviWebApps_Selected" Expanded="tviWebApps_Expanded">
+            <TreeViewItem Name="tviWebApps" Header="Web Applications" Expanded="tviWebApps_Expanded">
                 <TreeViewItem Name="tviPH"/>
             </TreeViewItem>
         </TreeView>

@@ -149,12 +149,6 @@ namespace SPStats.WPF
             treeviewItem.Items.Clear();
         }
 
-        private void tviWebApps_Selected(object sender, RoutedEventArgs e)
-        {
-           //ClearTreeViewItem(tviWebApps);
-            //ThreadPool.QueueUserWorkItem(new WaitCallback(GetWebApps));
-        }
-
         void GetWebApps(Object info)
         {
             foreach (SPService service in farm.Services)
@@ -205,6 +199,27 @@ namespace SPStats.WPF
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void tviApplicationPools_Selected(object sender, RoutedEventArgs e)
+        {
+            ClearListBox(lbDetails);
+            ThreadPool.QueueUserWorkItem(new WaitCallback(GetAppPools));
+        }
+
+        void GetAppPools(Object info)
+        {
+            foreach (SPService service in farm.Services)
+            {
+                if (service as SPWebService != null)
+                {
+                    foreach (SPApplicationPool appPool in ((SPWebService)service).ApplicationPools)
+                    {
+                        AddData(appPool.DisplayName, lbDetails);
+                    }
+                }
+
+            }
         }
     }
 }
