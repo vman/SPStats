@@ -152,10 +152,15 @@ namespace SPStats.WPF
             listBox.Items.Clear();
         }
 
+        static void ClearTreeViewItem(TreeViewItem treeviewItem)
+        {
+            treeviewItem.Items.Clear();
+        }
+
         private void tviWebApps_Selected(object sender, RoutedEventArgs e)
         {
-            ClearListBox(lbDetails);
-            ThreadPool.QueueUserWorkItem(new WaitCallback(GetWebApps));
+           // ClearTreeViewItem(tviWebApps);
+            //ThreadPool.QueueUserWorkItem(new WaitCallback(GetWebApps));
         }
 
         void GetWebApps(Object info)
@@ -166,11 +171,29 @@ namespace SPStats.WPF
                 {
                     foreach (SPWebApplication webApp in ((SPWebService)service).WebApplications)
                     {
-                        AddData(webApp.DisplayName, lbDetails);
+                        AddTreeViewItem(tviWebApps, webApp.DisplayName);
                     }
                 }
 
             }
+        }
+
+        void AddTreeViewItem(TreeViewItem parentItem, string childHeader)
+        {
+            this.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(delegate()
+            {
+             
+                TreeViewItem tvi = new TreeViewItem();
+                tvi.Header = childHeader;
+                parentItem.Items.Add(tvi);
+
+            }));
+        }
+
+        private void tviWebApps_Expanded(object sender, RoutedEventArgs e)
+        {
+            ClearTreeViewItem(tviWebApps);
+            ThreadPool.QueueUserWorkItem(new WaitCallback(GetWebApps));
         }
     }
 }
