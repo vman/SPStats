@@ -172,20 +172,20 @@ namespace SPStats.WPF
                 {
                     foreach (SPWebApplication webApp in ((SPWebService)service).WebApplications)
                     {
-                        AddTreeViewItem(tviWebApps, webApp.DisplayName, webApp.AlternateUrls[0].IncomingUrl);
+                        AddWebAppTreeViewItem(tviWebApps, webApp);
                     }
                 }
 
             }
         }
 
-        void AddTreeViewItem(TreeViewItem parentItem, string childHeader,string webAppUrl)
+        void AddWebAppTreeViewItem(TreeViewItem parentItem, SPWebApplication webApp)
         {
             this.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(delegate()
             {
                 TreeViewItem tvi = new TreeViewItem();
-                tvi.Header = childHeader;
-                tvi.Tag = webAppUrl;
+                tvi.Header = webApp.DisplayName;
+                tvi.Tag = webApp;
                 tvi.Selected += new RoutedEventHandler(tvi_Selected);
                 parentItem.Items.Add(tvi);
 
@@ -198,14 +198,9 @@ namespace SPStats.WPF
 
             var selectedTvi = sender as TreeViewItem;
 
-            using (SPSite site = new SPSite(selectedTvi.Tag.ToString()))
+            foreach (SPSite site in ((SPWebApplication)selectedTvi.Tag).Sites)
             {
-                SPWeb parentWeb = site.OpenWeb();
-
-                foreach (SPWeb web in parentWeb.Webs)
-                {
-                    AddData(web.Name, lbDetails);
-                }
+                AddData(site.Url, lbDetails);
             }
 
         }
