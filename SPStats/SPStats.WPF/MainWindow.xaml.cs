@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Microsoft.SharePoint.Administration;
 using System.Windows.Threading;
 using System.Threading;
+using Microsoft.SharePoint;
 
 namespace SPStats.WPF
 {
@@ -159,7 +160,7 @@ namespace SPStats.WPF
 
         private void tviWebApps_Selected(object sender, RoutedEventArgs e)
         {
-           // ClearTreeViewItem(tviWebApps);
+           //ClearTreeViewItem(tviWebApps);
             //ThreadPool.QueueUserWorkItem(new WaitCallback(GetWebApps));
         }
 
@@ -171,23 +172,42 @@ namespace SPStats.WPF
                 {
                     foreach (SPWebApplication webApp in ((SPWebService)service).WebApplications)
                     {
-                        AddTreeViewItem(tviWebApps, webApp.DisplayName);
+                        AddTreeViewItem(tviWebApps, webApp.DisplayName, webApp.AlternateUrls[0].IncomingUrl);
                     }
                 }
 
             }
         }
 
-        void AddTreeViewItem(TreeViewItem parentItem, string childHeader)
+        void AddTreeViewItem(TreeViewItem parentItem, string childHeader,string webAppUrl)
         {
             this.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(delegate()
             {
-             
                 TreeViewItem tvi = new TreeViewItem();
                 tvi.Header = childHeader;
+                tvi.Tag = webAppUrl;
+                tvi.Selected += new RoutedEventHandler(tvi_Selected);
                 parentItem.Items.Add(tvi);
 
             }));
+        }
+
+        void tvi_Selected(object sender, RoutedEventArgs e)
+        {
+            ClearListBox(lbDetails);
+
+            var selectedTvi = sender as TreeViewItem;
+
+            using (SPSite site = new SPSite(selectedTvi.Tag.ToString()))
+            {
+                SPWeb parentWeb = site.OpenWeb();
+
+                foreach (SPWeb web in parentWeb.Webs)
+                {
+                    AddData(web.Name, lbDetails);
+                }
+            }
+
         }
 
         private void tviWebApps_Expanded(object sender, RoutedEventArgs e)
