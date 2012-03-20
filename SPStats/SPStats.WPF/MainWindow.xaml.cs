@@ -221,5 +221,19 @@ namespace SPStats.WPF
 
             }
         }
+
+        private void tviServices_Selected(object sender, RoutedEventArgs e)
+        {
+            ClearListBox(lbDetails);
+            ThreadPool.QueueUserWorkItem(new WaitCallback(GetServices));
+        }
+
+        void GetServices(Object info)
+        {
+            foreach (SPService service in farm.Services)
+            {
+                AddData(string.IsNullOrEmpty(service.DisplayName) ? string.IsNullOrEmpty(service.TypeName) ? service.Name : service.TypeName : service.DisplayName, lbDetails);
+            }
+        }
     }
 }

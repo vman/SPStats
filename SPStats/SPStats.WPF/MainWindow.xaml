@@ -10,6 +10,7 @@
         <ListBox Height="500" HorizontalAlignment="Left" Margin="330,10,0,0" Name="lbDetails" ItemsSource="{Binding SolutionName}" VerticalAlignment="Top" Width="623" />
         <TreeView Height="500" HorizontalAlignment="Left" Margin="10,10,0,0" Name="tvFarmElements" VerticalAlignment="Top" Width="303">
             <TreeViewItem Name="tviFeaturedenifions" Header="Feature Definitions" Selected="tviFeaturedenifions_Selected"></TreeViewItem>
+            <TreeViewItem Name="tviServices" Header="Services" Selected="tviServices_Selected"></TreeViewItem>
             <TreeViewItem Name="tviServiceProxies" Header="Service Proxies" Selected="tviServiceProxies_Selected"></TreeViewItem>
             <TreeViewItem Name="tviApplicationPools" Header="Application Pools" Selected="tviApplicationPools_Selected"></TreeViewItem>
             <TreeViewItem Name="tviSolutions" Header="Solutions" Selected="tviSolutions_Selected"></TreeViewItem>
