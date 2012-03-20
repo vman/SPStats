@@ -172,6 +172,7 @@ namespace SPStats.WPF
                 tvi.Header = webApp.DisplayName;
                 tvi.Tag = webApp.Sites;
                 tvi.Selected += new RoutedEventHandler(tvi_Selected);
+               
                 parentItem.Items.Add(tvi);
 
             }));
@@ -182,11 +183,23 @@ namespace SPStats.WPF
             ClearListBox(lbDetails);
 
             var selectedTvi = sender as TreeViewItem;
-
+            
             foreach (SPSite site in ((SPSiteCollection)selectedTvi.Tag))
             {
-                AddData(site.Url, lbDetails);
+                AddSiteTreeViewItem(site, selectedTvi);
             }
+
+        }
+
+        private void AddSiteTreeViewItem(SPSite site, TreeViewItem parentItem)
+        {
+            this.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(delegate()
+            {
+                TreeViewItem tvi = new TreeViewItem();
+                tvi.Header = site.Url;
+                parentItem.Items.Add(tvi);
+                
+            }));
 
         }
 
@@ -194,11 +207,6 @@ namespace SPStats.WPF
         {
             ClearTreeViewItem(tviWebApps);
             ThreadPool.QueueUserWorkItem(new WaitCallback(GetWebApps));
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void tviApplicationPools_Selected(object sender, RoutedEventArgs e)
